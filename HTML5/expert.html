@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>ANIMALEC</title>
+    <link rel="icon" href="animalec.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/animalec.css" />
+  </head>
+
+  <body>
+    <div id="headerContainer"></div>
+
+    <div class="row p-2">
+      <div class="col-12 m-2 text-center">
+        <h2>Especialistas</h2>
+        <div class="separador">
+          ------------------------<i class="fas fa-star star-icon"></i
+          >------------------------
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="verEspecialistaModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="verEspecialistaModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="verEspecialistaModalLabel">
+                Detalhes do Especialista
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Fechar"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p><strong>ID:</strong> <span id="modalEspecialistaId"></span></p>
+              <p>
+                <strong>Nome do Especialista:</strong>
+                <span id="modalEspecialistaNome"></span>
+              </p>
+              <p>
+                <strong>Animal:</strong>
+                <span id="modalEspecialistaAnimal"></span>
+              </p>
+              <p>
+                <strong>Anos de Experiência:</strong>
+                <span id="modalEspecialistaExperiencia"></span>
+              </p>
+              <p>
+                <strong>Localização:</strong>
+                <span id="modalEspecialistaLocalizacao"></span>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 pt-2 pb-2">
+        <button class="btn btn-outline-success">
+          <a href="edit_expert.html">
+            <i class="fas fa-plus-square"></i> Adicionar Especialista
+          </a>
+        </button>
+        <button class="btn btn-outline-info">
+          <a href="index.html"> <i class="fas fa-bars"></i> Menu Principal </a>
+        </button>
+      </div>
+
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Especialistas</th>
+              <th scope="col">Animal / Grupo</th>
+              <th scope="col">Anos Experiência</th>
+              <th scope="col">Localização</th>
+              <th scope="col">Acções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="1">
+              <th scope="row">1</th>
+              <td>Ana Silva</td>
+              <td>Cão / Mamífero</td>
+              <td>25</td>
+              <td>Lisboa / Portugal</td>
+              <td>
+                <button class="btn btn-warning">
+                  <a
+                    href="edit_expert.html?especialista=Ana Silva&animais=mamifero&cidade=Lisboa&pais=Portugal&animal=Cão&experiencia=25"
+                  >
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                </button>
+                <button
+                  class="btn btn-info"
+                  onclick="abrirEspecialistaModal('1', 'Ana Silva', 'Cão / Mamífero', '25', 'Lisboa / Portugal')"
+                >
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-danger" onclick="removerLinha('1')">
+                  <i class="fas fa-trash-alt"></i> Remover
+                </button>
+              </td>
+            </tr>
+
+            <tr id="2">
+              <th scope="row">2</th>
+              <td>João Santos</td>
+              <td>Gato / Mamífero</td>
+              <td>50</td>
+              <td>Porto / Portugal</td>
+              <td>
+                <button class="btn btn-warning">
+                  <a
+                    href="edit_expert.html?especialista=João Santos&animais=mamifero&cidade=Porto&pais=Portugal&animal=Gato&experiencia=50"
+                  >
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                </button>
+                <button
+                  class="btn btn-info"
+                  onclick="abrirEspecialistaModal('2', 'João Santos', 'Gato / Mamífero', '50', 'Porto / Portugal')"
+                >
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-danger" onclick="removerLinha('2')">
+                  <i class="fas fa-trash-alt"></i> Remover
+                </button>
+              </td>
+            </tr>
+
+            <tr id="3">
+              <th scope="row">3</th>
+              <td>Maria Costa</td>
+              <td>Periquito / Ave</td>
+              <td>10</td>
+              <td>Faro / Portugal</td>
+              <td>
+                <button class="btn btn-warning">
+                  <a
+                    href="edit_expert.html?especialista=Maria Costa&animais=ave&cidade=Faro&pais=Portugal&animal=Periquito&experiencia=10"
+                  >
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                </button>
+                <button
+                  class="btn btn-info"
+                  onclick="abrirEspecialistaModal('3', 'Maria Costa', 'Periquito / Ave', '10', 'Faro / Portugal')"
+                >
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-danger" onclick="removerLinha('3')">
+                  <i class="fas fa-trash-alt"></i> Remover
+                </button>
+              </td>
+            </tr>
+
+            <tr id="4">
+              <th scope="row">4</th>
+              <td>Pedro Oliveira</td>
+              <td>Tartaruga / Anfíbio</td>
+              <td>5</td>
+              <td>Coimbra / Portugal</td>
+              <td>
+                <button class="btn btn-warning">
+                  <a
+                    href="edit_expert.html?especialista=Pedro Oliveira&animais=anfibio&cidade=Coimbra&pais=Portugal&animal=Tartaruga&experiencia=5"
+                  >
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                </button>
+                <button
+                  class="btn btn-info"
+                  onclick="abrirEspecialistaModal('4', 'Pedro Oliveira', 'Tartaruga / Anfíbio', '5', 'Coimbra / Portugal')"
+                >
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-danger" onclick="removerLinha('4')">
+                  <i class="fas fa-trash-alt"></i> Remover
+                </button>
+              </td>
+            </tr>
+
+            <tr id="5">
+              <th scope="row">5</th>
+              <td>Sofia Martins</td>
+              <td>Elefante / Mamífero</td>
+              <td>3</td>
+              <td>Braga / Portugal</td>
+              <td>
+                <button class="btn btn-warning">
+                  <a
+                    href="edit_expert.html?especialista=Sofia Martins&animais=mamifero&cidade=Braga&pais=Portugal&animal=Elefante&experiencia=3"
+                  >
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                </button>
+                <button
+                  class="btn btn-info"
+                  onclick="abrirEspecialistaModal('5', 'Sofia Martins', 'Elefante / Mamífero', '3', 'Braga / Portugal')"
+                >
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-danger" onclick="removerLinha('5')">
+                  <i class="fas fa-trash-alt"></i> Remover
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="footerContainer"></div>
+
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      function removerLinha(id) {
+        var eliminalinha = document.getElementById(id);
+        if (eliminalinha) {
+          eliminalinha.remove();
+          alert(`Registo com id ${id} Eliminado`);
+        }
+      }
+
+      function abrirEspecialistaModal(id, nome, animal, anos, localizacao) {
+        document.getElementById("modalEspecialistaId").innerText = id;
+        document.getElementById("modalEspecialistaNome").innerText = nome;
+        document.getElementById("modalEspecialistaAnimal").innerText = animal;
+        document.getElementById("modalEspecialistaExperiencia").innerText =
+          anos;
+        document.getElementById("modalEspecialistaLocalizacao").innerText =
+          localizacao;
+        $("#verEspecialistaModal").modal("show");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>ANIMALEC</title>
+  <link rel="icon" href="animalec.ico" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/animalec.css">
+</head>
+
+<body>
+  <div id="headerContainer"></div>
+
+  <div class="row p-2">
+  <div class="col-12 m-2 text-center">
+    <h2>Patrocinadores</h2>
+    <div class="separador">
+        ------------------------<i class="fas fa-star star-icon"></i>------------------------
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h2>Formulário de Patrocinador</h2>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-12">
+          <label for="patrocinador">Nome Patrocinador</label>
+          <input type="text" class="form-control" id="patrocinador" placeholder="Nome do Patrocinador" required>
+        </div>
+        <div class="form-group col-12">
+          <label for="animal">Nome animal</label>
+          <input type="text" class="form-control" id="animal" placeholder="Nome do animal" required>
+        </div>
+        <div class="form-group col-12">
+          <label for="animais">Escolha um animal</label>
+          <select name="animais" id="animais">
+            <option value="anfibio">ANFÍBIO</option>
+            <option value="ave">AVE</option>
+            <option value="mamifero">MAMÍFERO</option>
+            <option value="peixe">PEIXE</option>
+            <option value="reptil">RÉPTIL</option>
+          </select>
+        </div>
+        <div class="form-group col-12">
+          <label for="valor">Valor</label>
+          <input type="number" class="form-control" id="valor" placeholder="Valor" min="1" max="1000000000" required>
+        </div>
+      <div class="form-group col-12">
+        <label for="cidade">Cidade</label>
+        <input type="text" class="form-control" id="cidade" placeholder="Cidade" required>
+      </div>
+      <div class="form-group col-12">
+        <label for="pais">País</label>
+        <input type="text" class="form-control" id="pais" placeholder="País" required>
+      </div>
+    </div>
+      <button id="enviarForm" onclick="envioDados()" type="submit" class="btn btn-success"><i class="fas fa-edit"></i>Editar Patrocinador</button>
+      <button class="btn btn-danger">
+        <a href="sponsor.html">
+          Cancelar
+        </a>
+      </button> 
+    </form>
+  </div>
+  
+</div>
+  <div id="footerContainer"></div>
+  
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+<script>
+  let params = new URLSearchParams(document.location.search);
+  let patrocinador = params.get("patrocinador");
+  let animal = params.get("animal");
+  let animais = params.get("animais");
+  let cidade = params.get("cidade");
+  let pais = params.get("pais");
+  let valor = params.get("valor");
+  window.onload = () => {
+
+    if(patrocinador != undefined && patrocinador != null) {
+      document.getElementById("patrocinador").value = patrocinador;
+    }
+    if(animal != undefined && animal != null) {
+      document.getElementById("animal").value = animal;
+    }
+    if(cidade != undefined && cidade != null) {
+      document.getElementById("cidade").value = cidade;
+    }
+    if(pais != undefined && pais != null) {
+      document.getElementById("pais").value = pais;
+    }
+    if(animais != undefined && animais != null ) {
+      document.getElementById("animais").querySelector("option[value='" + animais.toLowerCase() + "']").selected = true;
+    }
+    if(valor != undefined && valor != null) {
+      document.getElementById("valor").value = valor;
+    }
+
+    if(animais == undefined || animais == null) {
+      document.getElementById("enviarForm").innerHTML = "Adicionar Especialista";
+    }
+  };
+
+  function envioDados() {
+    event.preventDefault();
+    if(animais == undefined || animais == null) {
+      alert(`Patrocinador criado!`);
+    } else {
+      alert(`Patrocinador actualizado!`);
+    }
+  }
+
+</script>
+
+</html>

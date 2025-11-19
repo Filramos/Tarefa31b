@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>ANIMALEC</title>
+    <link rel="icon" href="animalec.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/animalec.css" />
+  </head>
+
+  <body>
+    <div id="headerContainer"></div>
+
+    <div class="row p-2">
+      <div class="col-12 m-2 text-center">
+        <h2>Patrocinadores</h2>
+        <div class="separador">
+          ------------------------<i class="fas fa-star star-icon"></i
+          >------------------------
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="verPatrocinadorModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="verPatrocinadorModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="verPatrocinadorModalLabel">
+                Detalhes do Patrocinador
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Fechar"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p><strong>ID:</strong> <span id="modalPatrocinadorId"></span></p>
+              <p>
+                <strong>Nome do Patrocinador:</strong>
+                <span id="modalPatrocinadorNome"></span>
+              </p>
+              <p>
+                <strong>Animal:</strong>
+                <span id="modalPatrocinadorAnimal"></span>
+              </p>
+              <p>
+                <strong>Anos de patrocínio:</strong>
+                <span id="modalPatrocinadorExperiencia"></span>
+              </p>
+              <p>
+                <strong>Localização:</strong>
+                <span id="modalPatrocinadorLocalizacao"></span>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 pt-2 pb-2">
+        <button class="btn btn-outline-success">
+          <a href="edit_sponsor.html">
+            <i class="fas fa-plus-square"></i> Adicionar Patrocinador
+          </a>
+        </button>
+        <button class="btn btn-outline-info">
+          <a href="index.html"> <i class="fas fa-bars"></i> Menu Principal </a>
+        </button>
+      </div>
+
+      <div class="col-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Patrocinadores</th>
+              <th scope="col">Animal / Grupo</th>
+              <th scope="col">Anos Patrocínio</th>
+              <th scope="col">Localização</th>
+              <th scope="col">Acções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="1">
+              <th scope="row">1</th>
+              <td>Royal Canin</td>
+              <td>Cão / Mamifero</td>
+              <td>12</td>
+              <td>Lisboa / Portugal</td>
+              <td>
+                <button class="btn btn-warning">
+                  <a
+                    href="edit_sponsor.html?patrocinador=Royal Canin&cidade=Lisboa&pais=Portugal&animais=mamifero&animal=Cão&valor=12"
+                  >
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                </button>
+                <button
+                  class="btn btn-info"
+                  onclick="abrirModal('1', 'Royal Canin', 'Cão', '12', 'Lisboa / Portugal')"
+                >
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-danger" onclick="removerLinha('1')">
+                  <i class="fas fa-trash-alt"></i> Remover
+                </button>
+              </td>
+            </tr>
+
+            <tr id="2">
+              <th scope="row">2</th>
+              <td>Whiskas</td>
+              <td>Gato / Mamifero</td>
+              <td>8</td>
+              <td>Porto / Portugal</td>
+              <td>
+                <button class="btn btn-warning">
+                  <a
+                    href="edit_sponsor.html?patrocinador=Whiskas&cidade=Porto&pais=Portugal&animais=mamifero&animal=Gato&valor=8"
+                  >
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                </button>
+                <button
+                  class="btn btn-info"
+                  onclick="abrirModal('2', 'Whiskas', 'Gato', '8', 'Porto / Portugal')"
+                >
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-danger" onclick="removerLinha('2')">
+                  <i class="fas fa-trash-alt"></i> Remover
+                </button>
+              </td>
+            </tr>
+
+            <tr id="3">
+              <th scope="row">3</th>
+              <td>Ornimundo</td>
+              <td>Periquito / Ave</td>
+              <td>5</td>
+              <td>Coimbra / Portugal</td>
+              <td>
+                <button class="btn btn-warning">
+                  <a
+                    href="edit_sponsor.html?patrocinador=Ornimundo&cidade=Coimbra&pais=Portugal&animais=ave&animal=Periquito&valor=5"
+                  >
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                </button>
+                <button
+                  class="btn btn-info"
+                  onclick="abrirModal('3', 'Ornimundo', 'Periquito', '5', 'Coimbra / Portugal')"
+                >
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-danger" onclick="removerLinha('3')">
+                  <i class="fas fa-trash-alt"></i> Remover
+                </button>
+              </td>
+            </tr>
+
+            <tr id="4">
+              <th scope="row">4</th>
+              <td>Zoomarine</td>
+              <td>Tartaruga / Anfibio</td>
+              <td>15</td>
+              <td>Albufeira / Portugal</td>
+              <td>
+                <button class="btn btn-warning">
+                  <a
+                    href="edit_sponsor.html?patrocinador=Zoomarine&cidade=Albufeira&pais=Portugal&animais=anifibio&animal=Tartaruga&valor=15"
+                  >
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                </button>
+                <button
+                  class="btn btn-info"
+                  onclick="abrirModal('4', 'Zoomarine', 'Tartaruga', '15', 'Albufeira / Portugal')"
+                >
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-danger" onclick="removerLinha('4')">
+                  <i class="fas fa-trash-alt"></i> Remover
+                </button>
+              </td>
+            </tr>
+
+            <tr id="5">
+              <th scope="row">5</th>
+              <td>Badoca Safari Park</td>
+              <td>Elefante / Mamifero</td>
+              <td>7</td>
+              <td>Santiago do Cacém / Portugal</td>
+              <td>
+                <button class="btn btn-warning">
+                  <a
+                    href="edit_sponsor.html?patrocinador=Badoca Safari Park&cidade=Santiago do Cacém&pais=Portugal&animais=mamifero&animal=Elefante&valor=7"
+                  >
+                    <i class="fas fa-edit"></i> Editar
+                  </a>
+                </button>
+                <button
+                  class="btn btn-info"
+                  onclick="abrirModal('5', 'Badoca Safari Park', 'Elefante', '7', 'Santiago do Cacém / Portugal')"
+                >
+                  <i class="fas fa-eye"></i> Ver
+                </button>
+                <button class="btn btn-danger" onclick="removerLinha('5')">
+                  <i class="fas fa-trash-alt"></i> Remover
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="footerContainer"></div>
+
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      function abrirModal(id, nome, animal, experiencia, localizacao) {
+        $("#modalPatrocinadorId").text(id);
+        $("#modalPatrocinadorNome").text(nome);
+        $("#modalPatrocinadorAnimal").text(animal);
+        $("#modalPatrocinadorExperiencia").text(experiencia);
+        $("#modalPatrocinadorLocalizacao").text(localizacao);
+        $("#verPatrocinadorModal").modal("show");
+      }
+
+      function removerLinha(id) {
+        var eliminalinha = document.getElementById(id);
+        if (eliminalinha) {
+          eliminalinha.remove();
+          alert(`Registo com id ${id} Eliminado`);
+        }
+      }
+    </script>
+  </body>
+</html>
